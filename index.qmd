@@ -406,7 +406,6 @@ The variables selected by LASSO are volatile_acidity, residual sugar, sulphates,
 
 ```{r}
 lasso_formula <- make_formula(selected_vars)
-lasso_formula
 ```
 
 ---
@@ -427,7 +426,6 @@ All of the variables are selected in ridge regression.
 
 ```{r}
 ridge_formula <- make_formula(ridge_vars)
-ridge_formula
 ```
 
 
@@ -537,7 +535,6 @@ Extract the `adj.r.squared` values from `summaries` and use them to identify the
 ```{R}
 adj_r_squared_vals <- summaries$adj.r.squared
 adj_rsq_formula <- formulas[[which.max(adj_r_squared_vals)]]  #finds the formula with the maximum adj_r_squared
-adj_rsq_formula
 ```
 
 Store resulting formula as a variable called `rsq_formula`.
@@ -563,7 +560,6 @@ Store resulting formula as a variable called `aic_formula`.
 
 ```{R}
 aic_formula <- best_aic_formula
-aic_formula
 ```
 
 ---
@@ -586,7 +582,6 @@ final_formulas <- c(
   rsq_formula,
   aic_formula
 )
-final_formulas
 ```
 
 * Are `aic_formula` and `rsq_formula` the same? How do they differ from the formulas shortlisted in question 3?
@@ -599,9 +594,16 @@ summaries
 
 The AIC and RSQ formulas are not the same. They are very similar, but the RSQ formula includes total_sulfur_dioxide in its optimal model, while the AIC formula excludes it. 
 
-* Which of these is more reliable? Why? 
+
+* Which of these is more reliable? Why?
+
+I would say the RSQ formula is more reliable. With a data set this large, the R^2 is going to have more prediciton power than the AIC model. 
+
 
 * If we had a dataset with $10,000$ columns, which of these methods would you consider for your analyses? Why?
+
+I would probably use R^2 model, since the AIC model typically needs less variables and data in order to claim strong relationships between variables.
+
 
 ---
 
